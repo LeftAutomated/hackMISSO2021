@@ -1,21 +1,22 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+import postRoutes from './routes/posts.js';
 
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+app.use(express.json({ limit: '30mb', extended: true }))
+app.use(express.urlencoded({ limit: '30mb', extended: true }))
 
-app.use(express.json({
-    limit: "30mb",
-    extended: true
-}));
+app.use('/posts', postRoutes);
 
-app.use(express.urlencoded({
-    limit: "30mb",
-    extended: true
-}));
+const URI = process.env.DB_CONNECTION;
+const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
+    .catch((error) => console.log(`${error} did not connect`));
 
-console.log('Server index.js working');

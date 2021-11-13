@@ -1,6 +1,9 @@
+import React from 'react';
 import Topbar from "./components/topbar/Topbar"
 import Sidebar from "./components/sidebar/Sidebar"
 import "./app.css"
+import { AppBar, Container, Typography } from '@material-ui/core';
+
 
 const App = () => {
 
