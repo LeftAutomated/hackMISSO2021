@@ -1,17 +1,19 @@
-import React from 'react';
-import { AppBar, Container, Typography } from '@material-ui/core';
-import styles from './styles';
+import Topbar from "./components/topbar/Topbar"
+import Sidebar from "./components/sidebar/Sidebar"
+import "./app.css"
 
-function App() {
-  const classes = styles();
+const App = () => {
 
   return (
-    <Container>
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center"> Data Visualize </Typography>
-      </AppBar>
-    </ Container>
+    <div>
+      <Topbar />
+      <div className="container">
+        <Sidebar/>
+        <div className="others"> </div>
+      </div>
+    </div>
   );
+
 }
 
 export default App;
