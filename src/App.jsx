@@ -11,6 +11,7 @@ import Linegraph from './pages/LineGraph/LineGraph';
 import Table from './pages/Table/Table';
 import BarG from './pages/Bar/BarG';
 import Map from './pages/Map/Map';
+import DataUp from './pages/DataUpload/DataUpload';
 import { useDispatch } from 'react-redux';
 
 import { getPosts } from './actions/posts.js';
@@ -60,6 +61,9 @@ const App = () => {
             </Route>
             <Route path="/map">
               <Map />
+            </Route>
+            <Route path="/data-upload">
+              <DataUp />
             </Route>
           </Switch>
         </div>

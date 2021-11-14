@@ -19,15 +19,14 @@ const Pin = ({ data }) => {
 
     const getCoordinates = async () => {
         const response = axios.get(apiURI)
-        .catch((error) => {
-            console.error(error);
-        });
+            .catch((error) => {
+                console.error(error);
+            });
 
-        if(response && response.data){
+        if (response && response.data) {
             const loc = response.data.results[0].geometry.location;
             setLat(loc.lat);
             setLng(loc.lng);
-            console.log(lat);
         }
 
     }
@@ -40,10 +39,10 @@ const Pin = ({ data }) => {
             longitude={lat}
             latitude={lng}
         >
-            <div> 
+            <div>
                 <font color="white">
-                    {data.ESTAB_NAME.split(" ").map((n) => n[0]).join(".")} 
-                </font> 
+                    {data.ESTAB_NAME.split(" ").map((n) => n[0]).join(".")}
+                </font>
             </div>
             <svg
                 height={SIZE}
@@ -54,10 +53,10 @@ const Pin = ({ data }) => {
                     stroke: "none",
                     transform: `translate(${-SIZE / 2}px,${-SIZE}px)`,
                 }}
-                >
+            >
                 <path d={ICON} />
             </svg>
-            
+
         </Marker>
     );
 }
